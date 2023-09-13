@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -14,14 +14,24 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+} */
+
+.card {
+	box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%), 0 4px 16px 0 rgb(0 0 0 / 6%), 0 0 1px 0 rgb(0 0 0 / 10%);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.theme-color {
+	background-color: #0f172a;
 }
+
+@layer base {
+  input, select {
+    @apply text-xl rounded-md py-1 px-3 border border-solid;
+    border: 1px solid #eeeeee;
+  }
+
+  button {
+    @apply theme-color text-xl bg-green-500 py-2 px-6 rounded-md border-black font-medium text-white;
+  }
+}
+
