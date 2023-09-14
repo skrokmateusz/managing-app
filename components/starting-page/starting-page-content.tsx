@@ -1,11 +1,23 @@
 import { FormEvent, useRef } from 'react';
+import { useRouter } from 'next/router';
+import { signIn, useSession } from 'next-auth/react';
 
 function StartingPageContent() {
+	const router = useRouter();
 	const emailRef = useRef<HTMLInputElement>(null);
 	const passwordRef = useRef<HTMLInputElement>(null);
+	const { data: session, status } = useSession();
 
-	const submitHandler = (event: FormEvent) => {
+	const submitHandler = async (event: FormEvent) => {
 		event.preventDefault();
+		const enteredEmail = emailRef.current!.value;
+		const enteredPassword = passwordRef.current!.value;
+		const result = await signIn('credentials', { redirect: false, email: enteredEmail, password: enteredPassword });
+
+		if (!result.ok) {
+			return;
+		}
+		router.replace(`/${enteredEmail.slice(0, -12)}/dashboard`);
 	};
 
 	return (

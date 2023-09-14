@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,6 +20,7 @@
 
 .card {
 	box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%), 0 4px 16px 0 rgb(0 0 0 / 6%), 0 0 1px 0 rgb(0 0 0 / 10%);
+	border-radius: 10px;
 }
 
 .theme-color {
@@ -25,13 +28,49 @@
 }
 
 @layer base {
-  input, select {
-    @apply text-xl rounded-md py-1 px-3 border border-solid;
-    border: 1px solid #eeeeee;
-  }
+	input,
+	select {
+		@apply text-xl rounded-md py-1 px-3 border border-solid;
+		border: 1px solid #eeeeee;
+	}
 
-  button {
-    @apply theme-color text-xl bg-green-500 py-2 px-6 rounded-md border-black font-medium text-white;
-  }
+	button {
+		@apply theme-color text-xl bg-green-500 py-2 px-6 rounded-md border-black font-medium text-white;
+	}
+
+	table {
+		width: 800px;
+		height: 800px;
+		border-collapse: collapse;
+		overflow: hidden;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	}
+	th,
+	td {
+		padding: 15px;
+		background-color: rgba(255, 255, 255, 0.2);
+		color: #fff;
+	}
+	th {
+		text-align: left;
+	}
+	thead th {
+		background-color: #55608f;
+	}
+	tbody tr:hover {
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+	tbody td {
+		position: relative;
+	}
+	tbody td:hover:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: -9999px;
+		bottom: -9999px;
+		background-color: rgba(255, 255, 255, 0.2);
+		z-index: -1;
+	}
 }
-
